@@ -1,0 +1,204 @@
+/* Created by Tivotal */
+
+/* Google Fonts(Poppins) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #212121;
+}
+
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 45px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: #fff;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  overflow: hidden;
+  transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 0.3s ease, box-shadow 0.4s ease, letter-spacing 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #a777e3, #6e8efb);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 5px 10px rgba(110, 142, 251, 0.2);
+  letter-spacing: 1px;
+}
+
+.btn::after {
+  position: absolute;
+  content: "";
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50px;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  transform: scale(0);
+  transition: transform 0.6s ease-out;
+}
+
+.btn:hover:after {
+  transform: scale(1);
+}
+
+.btn .btn-icon {
+  font-size: 25px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn:hover .btn-icon {
+  transform: rotate(-180deg) scale(1.1);
+}
+
+.tooltip {
+  position: absolute;
+  background: rgba(39, 39, 39, 0.9);
+  padding: 22px;
+  top: 102%;
+  left: 50%;
+  border-radius: 15px;
+  transform: translateX(-50%) scale(0.8);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), visibility 0.5s ease;
+}
+
+.container:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent rgba(39, 39, 39, 0.9) transparent;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 -3px 3px rgba(0, 0, 0, 0.1));
+}
+
+.tooltip-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tooltip-icon {
+  position: relative;
+  text-decoration: none;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    background 0.3s ease, box-shadow 0.4s ease;
+}
+
+.tooltip-icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip-icon:nth-child(1):hover {
+  background: linear-gradient(135deg, #1da1f2, #1a91da);
+}
+
+.tooltip-icon:nth-child(2):hover {
+  background: linear-gradient(135deg, #1877f2, #165ed0);
+}
+
+.tooltip-icon:nth-child(3):hover {
+  background: linear-gradient(135deg, #0077b5, #005e94);
+}
+
+.tooltip-icon::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(39, 39, 39, 0.8) 0%,
+    rgba(39, 39, 39, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip-icon:hover:before {
+  opacity: 1;
+}
+
+.tooltip-icon i {
+  font-size: 20px;
+  color: #fff;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1;
+}
+
+.tooltip-icon:hover i {
+  transform: scale(1.2);
+}
+
+.btn {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(110, 142, 251, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(110, 142, 251, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(110, 142, 251, 0);
+  }
+}
